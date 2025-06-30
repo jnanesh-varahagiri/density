@@ -1,0 +1,41 @@
+<div class="density-selector">
+  <mat-form-field appearance="outline">
+    <mat-label>Select a density</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let val of options" [value]="val">{{val}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div [class]="'density-settings' + selected">
+  <section class="example-section">
+    <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+    <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+  </section>
+
+  <section class="example-section ">
+    <span class="example-list-section ">
+      <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color" [indeterminate]="someComplete()"
+        (change)="setAll($event.checked)">
+        {{task.name}}
+      </mat-checkbox>
+    </span>
+    <span class="example-list-section">
+      <ul>
+        <li *ngFor="let subtask of task.subtasks">
+          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" (ngModelChange)="updateAllComplete()">
+            {{subtask.name}}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </span>
+  </section>
+</div>
+
+
+
+<br />
+<br />
+
+<app-checkbox-density></app-checkbox-density>

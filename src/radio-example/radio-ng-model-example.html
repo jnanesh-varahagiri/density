@@ -1,0 +1,37 @@
+<div class="density-selector">
+  <mat-form-field appearance="outline">
+    <mat-label>Select a density</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let val of options" [value]="val">{{val}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<code>
+  // Use with ViewEncapsulation.None
+  <br />
+  // The default emulated ViewEncapsulation does not work for radio buttons
+  <br />
+  @include mat.radio-density({{selected || 0}});
+</code>
+<br />
+<br />
+
+<div [class]="'density-settings' + selected">
+  <label id="example-radio-group-label">Pick your favorite season</label>
+  <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="favoriteSeason"
+  >
+    <mat-radio-button
+      class="example-radio-button"
+      *ngFor="let season of seasons"
+      [value]="season"
+    >
+      {{season}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div>Your favorite season is: {{favoriteSeason}}</div>
+</div>

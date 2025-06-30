@@ -1,0 +1,39 @@
+<div class="density-selector">
+
+</div>
+
+<!-- <code>@include mat.checkbox-density({{selected || 0}});</code> -->
+
+<div [class]="'density-settings'">
+  <section class="example-section mdc-checkbox-3">
+    <mat-checkbox class="example-margin" [matTooltip]="'DENSITY-3'">Check me!</mat-checkbox>
+    <mat-checkbox class="example-margin" [disabled]="true" [matTooltip]="'DENSITY-3'">Disabled</mat-checkbox>
+  </section>
+
+  <section class="example-section">
+    <span class="example-list-section mdc-checkbox-2">
+      <mat-checkbox class="example-margin" [matTooltip]="'DENSITY-2'" [checked]="allComplete" [color]="task.color"
+        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+        {{task.name}}
+      </mat-checkbox>
+
+    </span>
+    <span class="example-list-section mdc-checkbox-1">
+      <mat-checkbox class="example-margin" [matTooltip]="'DENSITY-1'" [checked]="allComplete" [color]="task.color"
+        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+        {{task.name}}
+      </mat-checkbox>
+
+    </span>
+    <span class="example-list-section">
+      <ul>
+        <li *ngFor="let subtask of task.subtasks" class="mdc-checkbox-0">
+          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" [matTooltip]="'DENSITY-0'"
+            (ngModelChange)="updateAllComplete()">
+            {{subtask.name}}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </span>
+  </section>
+</div>

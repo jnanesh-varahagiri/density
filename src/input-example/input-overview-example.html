@@ -1,0 +1,44 @@
+<div class="density-selector">
+  <mat-form-field appearance="outline">
+    <mat-label>Select a density</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let val of options" [value]="val">{{val}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<code>
+  // Use with ViewEncapsulation.None
+  <br />
+  // The default emulated ViewEncapsulation does not work for form fields
+  <br />
+  @include mat.form-field-density({{selected || 0}});
+</code>
+<br />
+<br />
+<div [class]="'density-settings' + selected">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Favorite food</mat-label>
+      <input matInput placeholder="Ex. Pizza" value="Sushi" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+  </form>
+
+  <form class="example-form">
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Favorite food</mat-label>
+      <input matInput placeholder="Ex. Pizza" value="Sushi" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+  </form>
+</div>
